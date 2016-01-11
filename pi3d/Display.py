@@ -307,7 +307,7 @@ class Display(object):
     elif pi3d.PLATFORM != pi3d.PLATFORM_PI and pi3d.PLATFORM != pi3d.PLATFORM_ANDROID:
       n = xlib.XEventsQueued(self.opengl.d, xlib.QueuedAfterFlush)
       for i in range(n):
-        if xlib.XCheckMaskEvent(self.opengl.d, KeyPressMask, self.ev):
+        if xlib.XCheckMaskEvent(self.opengl.d, KeyPressMask | KeyReleaseMask, self.ev):
           self.event_list.append(self.ev)
         else:
           xlib.XNextEvent(self.opengl.d, self.ev)
